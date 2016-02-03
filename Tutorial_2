@@ -1,0 +1,14 @@
+labs <- read.csv("C:/Users/Wang Wenzhu/Desktop/IS4250/labs.csv")
+summary(labs$WaitTime)
+summary(labs$SvcSat)
+library(dplyr)
+
+waitGroup <- dplyr::select(labs,WaitTime)
+
+library(ggplot2)
+c <- ggplot(waitGroup, aes(WaitTime))
+c + geom_histogram(binwidth = 10)
+
+s <- data.frame(response=c("Yes", "No"), number=c(126,25))
+ss <- ggplot(s, aes(x=response, y=number))
+ss+geom_bar(stat = "identity")
